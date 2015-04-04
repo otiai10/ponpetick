@@ -4,6 +4,7 @@ __pt.FormatSourceURL = function(cb){
 };
 __pt.getSourceURL = function(title, cb) {
     __pt.FormatSourceURL(function(format) {
+        if (!format) return;
         cb(format.replace(/#{title}/g, title));
     });
 };

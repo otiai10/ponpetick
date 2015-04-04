@@ -2,7 +2,7 @@
     "manifest_version": 2,
 
     "name": "ponpetick",
-    "version": "0.0.1",
+    "version": "0.0.2",
 
     "description": "animetickからアニメの◯◯な画面に飛びたい",
     "icons" : {
