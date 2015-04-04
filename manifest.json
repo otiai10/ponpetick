@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+
+    "name": "ponpetick",
+    "version": "0.0.1",
+
+    "description": "animetickからアニメの◯◯な画面に飛びたい",
+    "icons" : {
+        "48"  : "src/img/icon.48.png",
+        "128" : "src/img/icon.128.png"
+    },
+    "permissions" : [
+        "storage",
+        "<all_urls>"
+    ],
+    "content_scripts": [
+        {
+            "matches" : [
+                "http://animetick.net/*"
+            ],
+            "js" : [
+                "src/js/app.js",
+                "src/js/animetick.js"
+            ]
+        }
+    ],
+    "options_page" : "src/html/config.html"
+}
