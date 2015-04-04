@@ -1,5 +1,9 @@
 var __pt = __pt || {
-    __key: {}, config: {}
+    __key: {}, config: {
+        defaults: {
+            "sourceURL0": "https://www.youtube.com/results?search_query=#{title}"
+        }
+    }
 };
 __pt.__key.config = "pt.config";
 __pt.config.set = function(key, value) {
@@ -8,6 +12,6 @@ __pt.config.set = function(key, value) {
 };
 __pt.config.get = function(key, cb) {
     chrome.storage.local.get(key, function(res) {
-        cb(res[key]);
+        cb((res[key] != undefined) ? res[key] : __pt.config.defaults[key]);
     });
 };
