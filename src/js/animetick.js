@@ -8,6 +8,15 @@ __pt.getSourceURL = function(title, cb) {
     cb(format.replace(/#{title}/g, title));
   });
 };
+// 処理対象のtitleオブジェクトと、置換対象のaオブジェクトをなにするか決める
+__pt.getDecorator = function() {
+  var defaultDecorator = function(title, anchor) {
+    debugger;
+    title.innerHTML = '';
+    title.appendChild(anchor);
+  };
+  return defaultDecorator;
+};
 __pt.Anchor = function(title, cb) {
   var url = __pt.getSourceURL(title, function(url) {
     var a = document.createElement('a');
@@ -23,7 +32,7 @@ __pt.Anchor = function(title, cb) {
   if (!_s.length) return;
   var title = _s[0].getElementsByTagName('h2')[0];
   __pt.Anchor(title.innerText, function(anchor) {
-    title.innerHTML = '';
-    title.appendChild(anchor);
+    var decorator = __pt.getDecorator();
+    decorator(title, anchor);
   });
 })();
