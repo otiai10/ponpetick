@@ -1,8 +1,13 @@
 var __pt = __pt || {
     __key: {}, config: {
         defaults: {
-            "sourceURL0": "https://www.youtube.com/results?search_query=#{title}"
+            "sourceURL0": "https://www.youtube.com/results?search_query=#{title}",
+            "useDemado": false
         }
+    },
+    consts: {
+      // demado: 'cdbfehghpggbjdhgdccjbkdgplgilmjh' // development
+      demado: 'dfmhlfpfpbijchleocfbpcdjgnbpdigh' // production
     }
 };
 __pt.__key.config = "pt.config";

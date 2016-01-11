@@ -9,19 +9,31 @@ __pt.getSourceURL = function(title, cb) {
   });
 };
 // 処理対象のtitleオブジェクトと、置換対象のaオブジェクトをなにするか決める
-__pt.getDecorator = function() {
-  var defaultDecorator = function(title, anchor) {
-    title.innerHTML = '';
-    title.appendChild(anchor);
-  };
-  return defaultDecorator;
+__pt.getDecorator = function(cb) {
+  __pt.config.get('useDemado', function(useDemado) {
+    if (!useDemado) return cb(function(title, anchor) {
+        title.innerHTML = '';
+        title.appendChild(anchor);
+    });
+    cb(function(title, anchor) {
+      title.addEventListener('click', function() {
+        chrome.runtime.sendMessage(__pt.consts.demado, {
+          path: '/mado/launch/external',
+          url: anchor.getAttribute('href')
+        }, function(res) {
+          if (res.status == 'error') return window.alert(JSON.stringify(res));
+        });
+      });
+      title.setAttribute('style', 'text-decoration: none;color: rgba(255,80,20,1)');
+    });
+  });
 };
 __pt.Anchor = function(title, cb) {
   var url = __pt.getSourceURL(title, function(url) {
     var a = document.createElement('a');
     a.setAttribute('href', url);
-    a.setAttribute('style', 'text-decoration: none;color: rgba(255,80,20,1)');
     a.setAttribute('target', '_blank');
+    a.setAttribute('style', 'text-decoration: none;color: rgba(255,80,20,1)');
     a.innerText = title;
     cb(a);
   });
@@ -31,7 +43,8 @@ __pt.Anchor = function(title, cb) {
   if (!_s.length) return;
   var title = _s[0].getElementsByTagName('h2')[0];
   __pt.Anchor(title.innerText, function(anchor) {
-    var decorator = __pt.getDecorator();
-    decorator(title, anchor);
+    __pt.getDecorator(function(decorator) {
+      decorator(title, anchor);
+    });
   });
 })();
