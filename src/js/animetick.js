@@ -11,7 +11,6 @@ __pt.getSourceURL = function(title, cb) {
 // 処理対象のtitleオブジェクトと、置換対象のaオブジェクトをなにするか決める
 __pt.getDecorator = function() {
   var defaultDecorator = function(title, anchor) {
-    debugger;
     title.innerHTML = '';
     title.appendChild(anchor);
   };
