@@ -18,9 +18,11 @@ __pt.getDecorator = function(cb) {
     cb(function(title, anchor) {
       title.addEventListener('click', function() {
         chrome.runtime.sendMessage(__pt.consts.demado, {
-          path: '/mado/launch/external',
+          path:   '/mado/launch/external',
+          action: '/mado/launch/external',
           url: anchor.getAttribute('href')
         }, function(res) {
+          console.log(res);
           if (res.status == 'error') return window.alert(JSON.stringify(res));
         });
       });
