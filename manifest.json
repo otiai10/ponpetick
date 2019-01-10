@@ -1,28 +1,33 @@
 {
     "manifest_version": 2,
-
     "name": "ponpetick",
-    "version": "0.0.6",
-
-    "description": "animetickからアニメの◯◯な画面に飛びたい",
-    "icons" : {
-        "48"  : "src/img/icon.48.png",
-        "128" : "src/img/icon.128.png"
+    "version": "1.0.0",
+    "description": "Animetickのアニメ管理画面からPonpeに飛びたい",
+    "icons": {
+        "48": "src/img/icon.48.png",
+        "128": "src/img/icon.128.png"
     },
-    "permissions" : [
-        "storage",
-        "<all_urls>"
+    "permissions": [
+        "tabs",
+        "http://animetick.net/*"
     ],
     "content_scripts": [
         {
-            "matches" : [
+            "matches": [
                 "http://animetick.net/*"
             ],
-            "js" : [
-                "src/js/app.js",
+            "js": [
                 "src/js/animetick.js"
+            ],
+            "css": [
+                "src/css/animetick.css"
             ]
         }
     ],
-    "options_page" : "src/html/config.html"
+    "background": {
+        "scripts": [
+            "src/js/background.js"
+        ]
+    },
+    "options_page": "src/html/config.html"
 }

@@ -1,18 +1,12 @@
-var __pt = __pt || {};
-window.onload = function(){
-    var inputs = {};
-    inputs.sourceURL = document.getElementById("source-url");
-    inputs.useDemado = document.getElementById("use-demado");
-    __pt.config.get("sourceURL0", function(url) {
-        inputs.sourceURL.value = url;
+(scope => {
+  const input = scope.document.querySelector('input[type=url]');
+  const button = scope.document.querySelector('button#save');
+  const config = JSON.parse(localStorage.getItem('config') || '{}');
+  input.value = config.server || '';
+  button.addEventListener('click', () => {
+    if (!input.value) return scope.alert('入力して');
+    chrome.runtime.sendMessage(null, {action: "/config:set", key: "server", value: input.value}, () => {
+      scope.location.reload();
     });
-    __pt.config.get("useDemado", function(use) {
-        inputs.useDemado.checked = use;
-    });
-    inputs.sourceURL.addEventListener("keydown", function(){
-        __pt.config.set("sourceURL0", this.value);
-    });
-    inputs.useDemado.addEventListener("change", function() {
-        __pt.config.set("useDemado", this.checked);
-    });
-};
+  });
+})(window);
