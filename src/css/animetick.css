@@ -1,8 +1,7 @@
-
-h2.ponpeable {
-  cursor: pointer;
-  transition: all 0.1s;
-}
-h2.ponpeable:hover {
+span.ponpeable {
   color: rgba(255,80,20,1);
+  cursor: pointer;
+}
+span.ponpeable:hover {
+  text-decoration: underline;
 }
