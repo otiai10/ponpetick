@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "ponpetick",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Animetickのアニメ管理画面からPonpeに飛びたい",
     "icons": {
         "48": "src/img/icon.48.png",
