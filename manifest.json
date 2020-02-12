@@ -8,7 +8,7 @@
         "128": "src/img/icon.128.png"
     },
     "permissions": [
-        "http://animetick.net/*"
+        "http://animetick.net/"
     ],
     "content_scripts": [
         {
