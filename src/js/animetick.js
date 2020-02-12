@@ -2,6 +2,7 @@
   chrome.runtime.sendMessage(null, { action: "/config:get" }, ({ server }) => {
     const url = new URL(server);
     const target = scope.document.querySelector("div.anime-info-bottom>h2");
+    if (!target) return;
     const link = scope.document.createElement("span");
     const title = target.innerText;
     link.classList.add("ponpeable");
