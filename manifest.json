@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "ponpetick",
     "version": "1.0.1",
-    "description": "Animetickのアニメ管理画面からPonpeに飛びたい",
+    "description": "アニメ視聴管理サービス「Animetick」のページから、対応するアニメ録画サーバの「Ponpe」のページを開く拡張です。",
     "icons": {
         "48": "src/img/icon.48.png",
         "128": "src/img/icon.128.png"
